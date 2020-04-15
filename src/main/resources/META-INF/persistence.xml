@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="HotelLucena" transaction-type="RESOURCE_LOCAL">
+    <non-jta-data-source>java:app/jdbc:mysql://localhost:3306/HotelLucena?zeroDateTimeBehavior=convertToNull</non-jta-data-source>
+    <class>br.cesjf.hotellucena.model.Apartamento</class>
+    <class>br.cesjf.hotellucena.model.Categoria</class>
+    <class>br.cesjf.hotellucena.model.Reservas</class>
+    <class>br.cesjf.hotellucena.model.Usuarios</class>
+    <class>br.cesjf.hotellucena.model.Itens</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+    </properties>
+  </persistence-unit>
+</persistence>
