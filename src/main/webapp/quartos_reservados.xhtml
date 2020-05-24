@@ -1,0 +1,32 @@
+<ui:composition template="/WEB-INF/templates/layout-login.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h2 class="page-header">Relatórios de Reservas</h2>
+        <br/>
+        <h:form id="formPrincipal">
+
+            <p:commandButton id="quartoReservado"
+                ajax="false"
+                value="Relatório Quartos Reservados"
+                action="#{relatorioBean.gerarQuartoReservado()}"
+                onclick="this.form.target = '_blank'" /> 
+            
+            <p:commandButton id="quartoOcupado"
+                ajax="false"
+                value="Relatório Quartos Ocupados"
+                action="#{relatorioBean.gerarQuartoOcupado()}"
+                onclick="this.form.target = '_blank'" /> 
+
+            <p:commandButton id="quartoDesocupado"
+                ajax="false"
+                value="Relatório Quartos Desocupados"
+                action="#{relatorioBean.gerarQuartoDesocupado()}"
+                onclick="this.form.target = '_blank'" />
+            
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -23,6 +23,7 @@
                     <p:menuitem value="Consulta por Usuário" icon="ui-icon-print" url="faces/consulta_usuarios.xhtml" rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
                     <p:menuitem value="Consulta por Quarto" icon="ui-icon-print" url="faces/consulta_quarto.xhtml" rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
                     <p:menuitem value="Relatório" icon="ui-icon-print" url="faces/relatorio.xhtml"  rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
+                    <p:menuitem value="Reservas" icon="ui-icon-print" url="faces/quartos_reservados.xhtml"  rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
                 </p:submenu>
                 
                 <p:menuitem value="Sair" icon="ui-icon-power" action="#{usuariosBean.logout()}" ajax="false" />

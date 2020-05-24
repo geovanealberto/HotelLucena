@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelQuartoDesocupado" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed5b2072-03a7-43bc-a765-b9c78cd34266">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="HotelLucena"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM reservas AS r
+	inner join usuarios AS u ON 
+	 r.usuarios_codUsuario  = u.codUsuario
+	 WHERE r.status <> 'Ocupado' 
+	 AND r.status <> 'Reservado']]>
+	</queryString>
+	<field name="codigoReserva" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codigoReserva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+	</field>
+	<field name="dataEntrada" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="dataEntrada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+	</field>
+	<field name="dataSaida" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="dataSaida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+	</field>
+	<field name="numeroHospedes" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numeroHospedes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+	</field>
+	<field name="codUsuario" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codUsuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+	</field>
+	<field name="nomeUsuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nomeUsuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="f6a8537a-9dd5-48f5-8b95-7838d494d62a"/>
+				<staticText>
+					<reportElement x="20" y="20" width="380" height="43" forecolor="#FFFFFF" uuid="14a66af7-83ea-4f63-85dc-bdb79969321d"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Quartos Desocupados]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="953a7e34-aa40-46ab-b7a0-ffb460e98313"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Hotel Lucena]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="21a712a3-572c-4412-b584-9feb7df53f7c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="88536259-a861-4662-885a-98a95403054a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea966e79-80b1-4faf-b865-22ffd381c55f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="79" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="610dd538-4ecc-4336-88d7-e404896fd8a4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee9eaaa7-2b59-42d4-be54-b010921f8e33"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="158" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5c6246b9-2473-4874-90d3-3aa6e3698eca">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="35f656dd-258c-4e10-bf71-6315c5a1233e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Saída]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="237" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="193e3a88-afeb-4fe2-82ec-a85ac29d0796">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5ae27095-1fd6-4bcc-9d8e-10d604d26c37"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Hospedes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="395" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="56a24228-49f9-49ac-893b-f5fecb23be68">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2ce75427-910e-45d6-bda1-c3f7011919f9"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="474" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5bf4ad6f-7d19-461e-a95d-328221f4c4d7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62d51631-312b-471e-b643-8cd3f0f8adbf"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Usuário]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="f5619d45-0f9a-4532-a87d-44e4adedfce0"/>
+			</line>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="79" height="20" uuid="783df64b-a93f-4e71-8793-3ee825fb5cf0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea966e79-80b1-4faf-b865-22ffd381c55f"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoReserva}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="79" y="0" width="79" height="20" uuid="8819747d-11ce-48c7-9899-c9af7a7b8f1d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee9eaaa7-2b59-42d4-be54-b010921f8e33"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataEntrada}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="158" y="0" width="79" height="20" uuid="a05ecbef-b77a-450f-98b7-bc878128866e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="35f656dd-258c-4e10-bf71-6315c5a1233e"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataSaida}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="237" y="0" width="79" height="20" uuid="890ba8c3-6ae4-48f5-a52c-59ecf64a50c9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5ae27095-1fd6-4bcc-9d8e-10d604d26c37"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroHospedes}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="395" y="0" width="79" height="20" uuid="4b0b69ef-c4ff-45f4-b946-33a3aa2e9bd5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2ce75427-910e-45d6-bda1-c3f7011919f9"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codUsuario}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="474" y="0" width="79" height="20" uuid="28fa8094-09dc-4c8b-855b-88cd71d716fb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62d51631-312b-471e-b643-8cd3f0f8adbf"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeUsuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="7897396c-c943-46ed-8fe8-5e828e969209"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="f61da985-f696-4368-9929-40b538d605ae"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="8c1257b6-6131-415a-8f60-05141fbae25a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
