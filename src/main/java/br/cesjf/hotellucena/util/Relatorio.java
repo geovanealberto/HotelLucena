@@ -25,10 +25,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-/**
- *
- * @author lucas
- */
 public class Relatorio {
     
     private HttpServletResponse response;
