@@ -29,7 +29,11 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.FillPatternType;
-
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import java.util.stream.Collectors;
 /**
  *
  * @author tassio
@@ -41,11 +45,14 @@ public class ReservasBean {
     Reservas reserva = new Reservas();
 
     List reservas = new ArrayList();
+    BarChartModel barModelReservados;
+         BarChartModel barModelConcluidos;
 
     //construtor
     public ReservasBean() {
         reservas = new ReservasDAO().buscarAtivos();
         reserva = new Reservas();
+        createBarModels();
     }
 
     //Métodos dos botões 
@@ -110,6 +117,77 @@ public class ReservasBean {
     public void setReservass(List reservas) {
         this.reservas = reservas;
     }
+    
+     private void createBarModels(){
+        chartReservados();
+        chartConcluidos();
+    }
+
+    private BarChartModel initBarModelReservados(){
+        BarChartModel model = new BarChartModel();
+
+        ChartSeries data = new ChartSeries();
+        data.setLabel("Quartos Reservados por Dia");
+
+        List<Reservas> dados = reservas;
+        List<Reservas> reservados = dados.stream().filter(p -> 
+            "Reservado".equals(p.getStatus())).collect(Collectors.toList()
+        );
+
+        reservados.forEach(p -> 
+            data.set(p.getDataEntrada(), p.totalReservasData(p.getDataEntrada()))
+        );
+
+        model.addSeries(data);
+
+        return model;
+    }
+
+    public void chartReservados(){
+        barModelReservados = initBarModelReservados();
+
+        barModelReservados.setTitle("Total de Quartos Reservados");
+        barModelReservados.setLegendPosition("pe");
+
+        Axis xAxis = barModelReservados.getAxis(AxisType.X);
+        xAxis.setLabel("Data");
+
+        Axis yAxis = barModelReservados.getAxis(AxisType.Y);
+        yAxis.setLabel("Quantidade");
+    }
+
+     private BarChartModel initBarModelConcluidos(){
+        BarChartModel model = new BarChartModel();
+
+        ChartSeries data = new ChartSeries();
+        data.setLabel("Quartos Reservados por Dia");
+
+        List<Reservas> dados = reservas;
+        List<Reservas> reservados = dados.stream().filter(p -> 
+            "".equals(p.getStatus())).collect(Collectors.toList()
+        );
+
+        reservados.forEach(p -> 
+            data.set(p.getDataEntrada(), p.totalReservasData(p.getDataEntrada()))
+        );
+
+        model.addSeries(data);
+
+        return model;
+    }
+
+    public void chartConcluidos(){
+        barModelConcluidos = initBarModelConcluidos();
+
+        barModelConcluidos.setTitle("Total de Quartos Concluídos");
+        barModelConcluidos.setLegendPosition("pe");
+
+        Axis xAxis = barModelConcluidos.getAxis(AxisType.X);
+        xAxis.setLabel("Data");
+
+        Axis yAxis = barModelConcluidos.getAxis(AxisType.Y);
+        yAxis.setLabel("Quantidade");
+    }
 
     public void postProcessXLS(Object document) {
         HSSFWorkbook wb = (HSSFWorkbook) document;
@@ -147,5 +225,4 @@ public class ReservasBean {
         reservas = (List) new ReservasDAO().buscarReservasApartamento(id);
         return reservas;
     }
-
 }

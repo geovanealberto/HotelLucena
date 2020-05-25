@@ -24,6 +24,8 @@
                     <p:menuitem value="Consulta por Quarto" icon="ui-icon-print" url="faces/consulta_quarto.xhtml" rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
                     <p:menuitem value="Relatório" icon="ui-icon-print" url="faces/relatorio.xhtml"  rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
                     <p:menuitem value="Reservas" icon="ui-icon-print" url="faces/quartos_reservados.xhtml"  rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
+                    <p:menuitem value="Grafico Concluidos" icon="ui-icon-print" url="faces/grafico_concluidos.xhtml"  rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
+                    <p:menuitem value="Grafico Reservados" icon="ui-icon-print" url="faces/grafico_reservados.xhtml"  rendered="#{usuario.tipoUsuariol == 'Gerente'}"/>
                 </p:submenu>
                 
                 <p:menuitem value="Sair" icon="ui-icon-power" action="#{usuariosBean.logout()}" ajax="false" />

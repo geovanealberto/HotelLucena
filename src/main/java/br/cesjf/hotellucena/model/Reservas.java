@@ -290,9 +290,25 @@ public class Reservas extends ServicosExtras implements Serializable {
                 total += 1;
             }
         }
-
-        return total;
-
-    }
-
+     return total;
 }
+
+        public int totalReservasData(Date data) {
+
+        int total = 0;
+
+        Reservas reserva = new Reservas();
+
+        List reservas = new ArrayList();
+        reservas = new ReservasDAO().buscarAtivos();
+
+        for (Object r : reservas) {
+            reserva = (Reservas) r;
+            Duration duracao = Duration.between(data.toInstant(), reserva.getDataEntrada().toInstant());
+            if (duracao.isZero()) {
+                total += 1;
+            }
+        }
+        return total;
+    }
+  }
